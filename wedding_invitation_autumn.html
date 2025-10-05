@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nurzhan & Munavvar — Wedding Invitation</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Playfair+Display+SC:wght@700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ivory:#f8f2ea;
+      --gold:#c79a3b;
+      --ink:#3a2d26;
+      --muted:#6d5a4a;
+      --leaf:#9c6b2f;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: var(--ivory) url('./assets/autumn_bg.png') center/cover no-repeat fixed;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      display:flex; align-items:center; justify-content:center;
+      padding:16px;
+    }
+    .wrap{
+      width:min(920px, 96vw); min-height:86vh; position:relative;
+    }
+    .card{
+      position:relative; background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(2px);
+      border-radius: 26px; padding:clamp(18px, 4vw, 48px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.10);
+      border:1px solid rgba(199,154,59,0.45);
+      animation: rise .8s ease-out both;
+    }
+    .frame{
+      position:absolute; inset:10px;
+      border-radius:22px; pointer-events:none;
+      border: 2px solid var(--gold);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+    }
+    header{ text-align:center; margin-top:6px; }
+    .names{ 
+      font-family:"Playfair Display", serif; 
+      font-weight:600; letter-spacing:.5px; 
+      font-size: clamp(36px, 6.2vw, 70px);
+      color: var(--ink);
+    }
+    .subtitle{
+      margin-top:6px; color: var(--muted);
+      letter-spacing:.05em; font-size: clamp(14px,2.4vw,18px);
+    }
+
+    .lang{ display:flex; gap:8px; justify-content:center; margin: 16px 0 18px; }
+    .lang button{
+      background: linear-gradient(180deg, #fffaf0, #f2e3c9);
+      border:1px solid rgba(199,154,59,0.65);
+      color: var(--ink);
+      padding:8px 12px; border-radius:12px; cursor:pointer;
+      font: 500 14px/1 "Cormorant Garamond", serif;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .lang button:hover{ transform: translateY(-1px); box-shadow:0 8px 20px rgba(0,0,0,.08);}
+    .lang button.active{ background:#fff5e1; border-color: var(--gold);}
+
+    .content{ 
+      background: rgba(255,255,255,0.82);
+      border:1px solid rgba(199,154,59,0.35);
+      border-radius:18px; padding:clamp(16px,3vw,28px);
+      animation: fade .9s .1s ease both;
+    }
+    .content p{ margin:.45em 0; font-size: clamp(16px,2.6vw,20px);}
+
+    .meta{
+      display:grid; grid-template-columns:1fr 1fr; gap:12px 18px;
+      margin-top:14px; font-size: clamp(15px,2.5vw,18px);
+    }
+    @media (max-width:560px){ .meta{ grid-template-columns:1fr; } }
+
+    .meta .k{ color:var(--muted) }
+    .meta .v{ font-weight:600 }
+
+    .actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .btn{
+      text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; border:1px solid rgba(199,154,59,.65);
+      background: linear-gradient(180deg, #fffaf0, #f2e3c9);
+      color:var(--ink); transition: transform .15s ease, box-shadow .15s ease;
+      font-size:15px;
+    }
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.12);}
+
+    footer{ text-align:center; margin-top:18px; color:var(--muted); font-size:15px; }
+
+    .orn{ width:100%; height:1px; margin:18px 0; 
+      background:linear-gradient(90deg, transparent, rgba(199,154,59,.65), transparent); 
+    }
+
+    .audio{ display:flex; justify-content:center; gap:10px; margin:8px 0 2px; }
+    .audio button{
+      border:1px solid rgba(199,154,59,.65);
+      background: linear-gradient(180deg, #fff8ec, #f4e6cf);
+      border-radius:999px; padding:8px 12px; cursor:pointer;
+      font: 500 14px/1 "Cormorant Garamond", serif;
+    }
+
+    @keyframes rise{ from{ opacity:0; transform:translateY(10px)} to{ opacity:1; transform:none} }
+    @keyframes fade{ from{ opacity:0} to{ opacity:1} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="frame" aria-hidden="true"></div>
+      <header>
+        <div class="names">Nurzhan &amp; Munavvar</div>
+        <div class="subtitle">Wedding Invitation — 26.10.2025</div>
+      </header>
+
+      <div class="lang" role="tablist" aria-label="Language selector">
+        <button role="tab" aria-selected="true" data-lang="kk" class="active">Қазақша</button>
+        <button role="tab" aria-selected="false" data-lang="ru">Русский</button>
+        <button role="tab" aria-selected="false" data-lang="en">English</button>
+      </div>
+
+      <div class="content">
+        <div id="content"></div>
+
+        <div class="meta">
+          <div><span class="k" data-i18n="date_k"></span>: <span class="v" data-i18n="date_v"></span></div>
+          <div><span class="k" data-i18n="venue_k"></span>: <span class="v" data-i18n="venue_v"></span></div>
+          <div><span class="k" data-i18n="city_k"></span>: <span class="v" data-i18n="city_v"></span></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" id="mapLink" target="_blank" rel="noopener">📍 <span id="mapText"></span></a>
+          <a class="btn" id="calendarLink" download="Nurzhan_Munavvar_Wedding.ics">🗓 <span id="calText"></span></a>
+        </div>
+      </div>
+
+      <div class="orn"></div>
+      <footer id="footerNote"><em>Forever begins here 💍</em></footer>
+
+      <div class="audio">
+        <audio id="bgm" src="./assets/ambient.wav" preload="auto" loop></audio>
+        <button id="playBtn">▶️ Play music</button>
+        <button id="pauseBtn">⏸️ Pause</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const langs = {
+      "kk": {
+        content: "<p><strong>Құрметті достар!</strong></p><p>Біз, <strong>Нұржан мен Мунаввар</strong>, өміріміздегі ең қуанышты күнге — үйлену тойымызға шақырамыз!</p>",
+        date_k: "Күні", date_v: "2025 жылғы 26 қазан, 18:00",
+        venue_k: "Орын", venue_v: "«YASHNOBOD» мейрамханасы",
+        city_k: "Мекенжай", city_v: "Ташкент қ., Бешарик көш., 40а",
+        map_text: "Картаны ашу",
+        cal_text: "Күнтізбеге қосу",
+      },
+      "ru": {
+        content: "<p><strong>Дорогие друзья!</strong></p><p>Мы, <strong>Нуржан и Мунаввар</strong>, с радостью приглашаем вас на наше свадебное торжество!</p>",
+        date_k: "Дата", date_v: "26 октября 2025, 18:00",
+        venue_k: "Место", venue_v: "Ресторан «YASHNOBOD»",
+        city_k: "Адрес", city_v: "Ташкент, ул. Бешарик 40а",
+        map_text: "Открыть на карте",
+        cal_text: "Добавить в календарь",
+      },
+      "en": {
+        content: "<p><strong>Dear friends,</strong></p><p>We, <strong>Nurzhan and Munavvar</strong>, are delighted to invite you to celebrate our wedding day!</p>",
+        date_k: "Date", date_v: "October 26, 2025, 6:00 PM",
+        venue_k: "Venue", venue_v: "“YASHNOBOD” Restaurant",
+        city_k: "Address", city_v: "40A Besharik Street, Tashkent",
+        map_text: "Open in Maps",
+        cal_text: "Add to Calendar",
+      }
+    };
+
+    const mapAddress = encodeURIComponent("Ресторан YASHNOBOD, Ташкент, ул. Бешарик 40а");
+    const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapAddress}`;
+
+    const contentDiv = document.getElementById("content");
+    const footerNote = document.getElementById("footerNote");
+    const mapLink = document.getElementById("mapLink");
+    const calendarLink = document.getElementById("calendarLink");
+    const mapText = document.getElementById("mapText");
+    const calText = document.getElementById("calText");
+
+    function setLang(code){
+      const t = langs[code];
+      contentDiv.innerHTML = t.content;
+      document.querySelector('[data-i18n="date_k"]').textContent = t.date_k;
+      document.querySelector('[data-i18n="date_v"]').textContent = t.date_v;
+      document.querySelector('[data-i18n="venue_k"]').textContent = t.venue_k;
+      document.querySelector('[data-i18n="venue_v"]').textContent = t.venue_v;
+      document.querySelector('[data-i18n="city_k"]').textContent = t.city_k;
+      document.querySelector('[data-i18n="city_v"]').textContent = t.city_v;
+      mapText.textContent = t.map_text;
+      calText.textContent = t.cal_text;
+    }
+
+    document.querySelectorAll(".lang button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".lang button").forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected","false"); });
+        btn.classList.add("active"); btn.setAttribute("aria-selected","true");
+        setLang(btn.dataset.lang);
+      });
+    });
+
+    // Init
+    setLang("kk");
+    mapLink.href = mapHref;
+    calendarLink.href = "./assets/Nurzhan_Munavvar_Wedding.ics";
+
+    // Music controls (user gesture friendly)
+    const bgm = document.getElementById('bgm');
+    document.getElementById('playBtn').addEventListener('click', () => bgm.play());
+    document.getElementById('pauseBtn').addEventListener('click', () => bgm.pause());
+  </script>
+</body>
+</html>
